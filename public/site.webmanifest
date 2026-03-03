@@ -1,0 +1,17 @@
+{
+  "name": "Sirius - Eternal Love & Connection",
+  "short_name": "Sirius",
+  "description": "Experience the timeless connection of Sirius - a celestial journey of eternal love and devotion",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1d26",
+  "theme_color": "#D4A24F",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
