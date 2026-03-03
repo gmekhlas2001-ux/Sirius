@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
@@ -12,19 +12,23 @@ import DiptychSection from './sections/DiptychSection';
 import PortraitSection3 from './sections/PortraitSection3';
 import ClosingSection from './sections/ClosingSection';
 import Footer from './sections/Footer';
+import MessagesPanel from './sections/MessagesPanel';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [showMessages, setShowMessages] = useState(false);
   useEffect(() => {
+    if (showMessages) return;
+
     // Wait for all ScrollTriggers to be created
     const timer = setTimeout(() => {
       const pinned = ScrollTrigger.getAll()
         .filter(st => st.vars.pin)
         .sort((a, b) => a.start - b.start);
-      
+
       const maxScroll = ScrollTrigger.maxScroll(window);
-      
+
       if (!maxScroll || pinned.length === 0) return;
 
       // Build ranges and snap targets from pinned sections
@@ -42,7 +46,7 @@ function App() {
             const inPinned = pinnedRanges.some(
               r => value >= r.start - 0.02 && value <= r.end + 0.02
             );
-            
+
             // If not in pinned section, allow free scroll
             if (!inPinned) return value;
 
@@ -51,7 +55,7 @@ function App() {
               Math.abs(r.center - value) < Math.abs(closest - value) ? r.center : closest,
               pinnedRanges[0]?.center ?? 0
             );
-            
+
             return target;
           },
           duration: { min: 0.15, max: 0.35 },
@@ -65,7 +69,17 @@ function App() {
       clearTimeout(timer);
       ScrollTrigger.getAll().forEach(st => st.kill());
     };
-  }, []);
+  }, [showMessages]);
+
+  if (showMessages) {
+    return (
+      <div className="relative bg-night-slate min-h-screen">
+        <div className="grain-overlay" />
+        <Navigation onToggleMessages={() => setShowMessages(false)} showingMessages={true} />
+        <MessagesPanel />
+      </div>
+    );
+  }
 
   return (
     <div className="relative bg-night-slate min-h-screen">
@@ -73,7 +87,7 @@ function App() {
       <div className="grain-overlay" />
 
       {/* Navigation */}
-      <Navigation />
+      <Navigation onToggleMessages={() => setShowMessages(true)} showingMessages={false} />
 
       {/* Main Content */}
       <main className="relative">

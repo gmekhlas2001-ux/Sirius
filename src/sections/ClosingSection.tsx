@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Send } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,8 @@ export default function ClosingSection() {
   
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -82,13 +85,36 @@ export default function ClosingSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const { error: insertError } = await supabase
+        .from('messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }
+        ]);
+
+      if (insertError) throw insertError;
+
+      setSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    } catch (err) {
+      setError('Failed to send message. Please try again.');
+      console.error('Error submitting message:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -152,8 +178,8 @@ export default function ClosingSection() {
 
           {submitted ? (
             <div className="text-center py-12">
-              <Star 
-                className="w-8 h-8 text-antique-gold star-glow mx-auto mb-4" 
+              <Star
+                className="w-8 h-8 text-antique-gold star-glow mx-auto mb-4"
                 fill="#D4A24F"
                 strokeWidth={0}
               />
@@ -161,6 +187,11 @@ export default function ClosingSection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-red-900/20 border border-red-500/30 px-4 py-3 text-sm text-red-300">
+                  {error}
+                </div>
+              )}
               <div>
                 <label className="block font-sans text-xs text-muted-parchment mb-2 tracking-wider">
                   NAME
@@ -205,10 +236,20 @@ export default function ClosingSection() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-antique-gold text-night-slate font-sans text-sm tracking-wider btn-hover transition-colors"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-antique-gold text-night-slate font-sans text-sm tracking-wider btn-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="w-4 h-4" />
-                Send
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-night-slate border-t-transparent rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Send
+                  </>
+                )}
               </button>
             </form>
           )}
