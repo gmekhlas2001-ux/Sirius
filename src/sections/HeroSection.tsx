@@ -118,32 +118,32 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div 
+      <div
         ref={contentRef}
-        className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[min(72vw,980px)] text-center"
+        className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[min(90vw,980px)] px-4 text-center"
       >
         {/* Star Mark */}
-        <div ref={starRef} className="flex justify-center mb-6">
-          <Star 
-            className="w-6 h-6 text-antique-gold star-glow" 
+        <div ref={starRef} className="flex justify-center mb-4 md:mb-6">
+          <Star
+            className="w-5 h-5 md:w-6 md:h-6 text-antique-gold star-glow"
             fill="#D4A24F"
             strokeWidth={0}
           />
         </div>
 
         {/* Eyebrow */}
-        <div 
+        <div
           ref={eyebrowRef}
-          className="font-sans text-xs tracking-widest text-muted-parchment mb-4"
+          className="font-sans text-[10px] md:text-xs tracking-widest text-muted-parchment mb-3 md:mb-4"
         >
           SIRIUS
         </div>
 
         {/* Headline */}
-        <h1 
+        <h1
           ref={headlineRef}
-          className="font-serif text-warm-ivory uppercase tracking-widest leading-tight mb-6"
-          style={{ fontSize: 'clamp(44px, 6vw, 84px)' }}
+          className="font-serif text-warm-ivory uppercase tracking-widest leading-tight mb-4 md:mb-6"
+          style={{ fontSize: 'clamp(28px, 6vw, 84px)' }}
         >
           {words.map((word, i) => (
             <span key={i} className="word inline-block mr-[0.25em]">
@@ -153,21 +153,21 @@ export default function HeroSection() {
         </h1>
 
         {/* Subheadline */}
-        <p 
+        <p
           ref={subheadRef}
-          className="font-sans text-sm text-muted-parchment tracking-wide mb-10"
+          className="font-sans text-xs md:text-sm text-muted-parchment tracking-wide mb-8 md:mb-10 px-4"
         >
           A quiet place to remember, to celebrate, and to look forward.
         </p>
 
         {/* CTAs */}
-        <div ref={ctaRef} className="flex items-center justify-center gap-6">
-          <button className="px-8 py-3 border border-antique-gold text-antique-gold font-sans text-sm tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          <button className="px-6 sm:px-8 py-2.5 sm:py-3 border border-antique-gold text-antique-gold font-sans text-xs sm:text-sm tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors whitespace-nowrap touch-manipulation">
             Open the letter
           </button>
-          <a 
-            href="#memories" 
-            className="font-sans text-sm text-warm-ivory link-underline"
+          <a
+            href="#memories"
+            className="font-sans text-xs sm:text-sm text-warm-ivory link-underline touch-manipulation"
           >
             Share a memory
           </a>

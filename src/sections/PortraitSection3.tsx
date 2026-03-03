@@ -92,20 +92,20 @@ export default function PortraitSection3() {
   const words = headlineText.split(' ');
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="relative w-screen h-screen overflow-hidden z-[60]"
     >
       {/* Full-bleed Portrait */}
-      <div 
+      <div
         ref={portraitRef}
         className="absolute inset-0 w-full h-full"
       >
-        <img 
-          src="/portrait_soft_light.jpg" 
+        <img
+          src="/portrait_soft_light.jpg"
           alt="Portrait"
           className="w-full h-full object-cover"
-          style={{ 
+          style={{
             filter: 'saturate(0.6) contrast(1.1)',
             objectPosition: '38% 50%'
           }}
@@ -113,32 +113,35 @@ export default function PortraitSection3() {
       </div>
 
       {/* Right Dark Overlay */}
-      <div 
+      <div
         ref={overlayRef}
-        className="absolute right-0 top-0 w-[42vw] h-full"
+        className="absolute right-0 top-0 w-full md:w-[42vw] h-full"
         style={{
           background: 'linear-gradient(270deg, rgba(11,13,16,0.78), rgba(11,13,16,0))'
         }}
       />
 
+      {/* Mobile Bottom Overlay */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night-slate/80" />
+
       {/* Text Content */}
-      <div 
+      <div
         ref={textRef}
-        className="absolute right-[9vw] top-1/2 -translate-y-1/2 w-[30vw] text-left"
+        className="absolute left-1/2 md:left-auto md:right-[9vw] bottom-[8%] md:top-1/2 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 w-[85vw] md:w-[30vw] px-6 md:px-0 text-left"
       >
         {/* Star Mark */}
-        <div className="mb-6">
-          <Star 
-            className="w-5 h-5 text-antique-gold star-glow" 
+        <div className="mb-4 md:mb-6">
+          <Star
+            className="w-4 h-4 md:w-5 md:h-5 text-antique-gold star-glow"
             fill="#D4A24F"
             strokeWidth={0}
           />
         </div>
 
         {/* Headline */}
-        <h2 
-          className="headline font-serif text-warm-ivory uppercase tracking-wider leading-snug mb-6"
-          style={{ fontSize: 'clamp(28px, 4vw, 56px)' }}
+        <h2
+          className="headline font-serif text-warm-ivory uppercase tracking-wider leading-snug mb-4 md:mb-6"
+          style={{ fontSize: 'clamp(24px, 4vw, 56px)' }}
         >
           {words.map((word, i) => (
             <span key={i} className="word inline-block mr-[0.2em]">
@@ -148,15 +151,15 @@ export default function PortraitSection3() {
         </h2>
 
         {/* Body */}
-        <p className="body-line font-sans text-sm text-muted-parchment leading-relaxed mb-2">
+        <p className="body-line font-sans text-xs md:text-sm text-muted-parchment leading-relaxed mb-1.5 md:mb-2">
           No matter the season, you carry a kind of warmth
         </p>
-        <p className="body-line font-sans text-sm text-muted-parchment leading-relaxed mb-8">
+        <p className="body-line font-sans text-xs md:text-sm text-muted-parchment leading-relaxed mb-6 md:mb-8">
           that makes people feel at home.
         </p>
 
         {/* CTA */}
-        <button className="cta px-6 py-2 border border-antique-gold text-antique-gold font-sans text-sm tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors">
+        <button className="cta px-5 md:px-6 py-2 border border-antique-gold text-antique-gold font-sans text-xs md:text-sm tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors touch-manipulation">
           Light a candle
         </button>
       </div>

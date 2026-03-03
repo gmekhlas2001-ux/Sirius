@@ -88,34 +88,34 @@ export default function NoteSection() {
       </div>
 
       {/* Paper Card */}
-      <div 
+      <div
         ref={cardRef}
-        className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 w-[min(78vw,720px)] paper-texture shadow-card animate-float"
-        style={{ 
+        className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 w-[min(90vw,720px)] paper-texture shadow-card animate-float"
+        style={{
           aspectRatio: '4/3',
-          padding: '8%',
+          padding: 'clamp(5%, 8%, 10%)',
         }}
       >
         {/* Handwritten Text */}
         <div ref={textRef} className="h-full flex flex-col justify-center">
-          <p className="font-handwritten text-2xl md:text-3xl text-gray-800 leading-relaxed">
+          <p className="font-handwritten text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 leading-relaxed">
             <span className="line block">
               I don't say it enough out loud—so I wrote it down.
             </span>
           </p>
-          <p className="font-handwritten text-2xl md:text-3xl text-gray-800 leading-relaxed mt-4">
+          <p className="font-handwritten text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 leading-relaxed mt-3 md:mt-4">
             <span className="line block">
-              Thank you for the patience, the laughter, and the quiet 
+              Thank you for the patience, the laughter, and the quiet
             </span>
           </p>
-          <p className="font-handwritten text-2xl md:text-3xl text-gray-800 leading-relaxed">
+          <p className="font-handwritten text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 leading-relaxed">
             <span className="line block">
               strength you bring into every room.
             </span>
           </p>
-          
+
           {/* Signature */}
-          <p className="font-handwritten text-3xl md:text-4xl text-gray-700 mt-12 text-right pr-[10%]">
+          <p className="font-handwritten text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 mt-8 md:mt-12 text-right pr-[5%] md:pr-[10%]">
             <span className="line block">— Me</span>
           </p>
         </div>

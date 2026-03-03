@@ -108,37 +108,38 @@ export default function DiptychSection() {
   const words = headlineText.split(' ');
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="relative w-screen h-screen overflow-hidden z-50"
     >
       {/* Left Portrait */}
-      <div 
+      <div
         ref={leftPortraitRef}
-        className="absolute left-0 top-0 w-[35vw] h-full"
+        className="absolute left-0 top-0 w-full md:w-[35vw] h-full"
       >
-        <img 
-          src="/portrait_diptych_left.jpg" 
+        <img
+          src="/portrait_diptych_left.jpg"
           alt="Portrait"
           className="w-full h-full object-cover"
           style={{ filter: 'saturate(0.6) contrast(1.1)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-night-slate/50" />
+        <div className="md:hidden absolute inset-0 bg-night-slate/70" />
       </div>
 
       {/* Left Hairline */}
-      <div 
-        className="absolute top-0 h-full hairline-vertical"
+      <div
+        className="hidden md:block absolute top-0 h-full hairline-vertical"
         style={{ left: '35vw', opacity: 0.3 }}
       />
 
       {/* Right Portrait */}
-      <div 
+      <div
         ref={rightPortraitRef}
-        className="absolute right-0 top-0 w-[35vw] h-full"
+        className="hidden md:block absolute right-0 top-0 w-[35vw] h-full"
       >
-        <img 
-          src="/portrait_diptych_right.jpg" 
+        <img
+          src="/portrait_diptych_right.jpg"
           alt="Portrait"
           className="w-full h-full object-cover"
           style={{ filter: 'saturate(0.6) contrast(1.1)' }}
@@ -147,30 +148,30 @@ export default function DiptychSection() {
       </div>
 
       {/* Right Hairline */}
-      <div 
-        className="absolute top-0 h-full hairline-vertical"
+      <div
+        className="hidden md:block absolute top-0 h-full hairline-vertical"
         style={{ right: '35vw', opacity: 0.3 }}
       />
 
       {/* Center Message Card */}
-      <div 
+      <div
         ref={cardRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(46vw,520px)] bg-deep-ink/80 border border-warm-ivory/10 p-10 md:p-12"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(85vw,520px)] bg-deep-ink/90 md:bg-deep-ink/80 border border-warm-ivory/10 p-6 sm:p-8 md:p-10 lg:p-12"
       >
         <div ref={textRef}>
           {/* Star Mark */}
-          <div className="mb-6">
-            <Star 
-              className="w-5 h-5 text-antique-gold star-glow" 
+          <div className="mb-4 md:mb-6">
+            <Star
+              className="w-4 h-4 md:w-5 md:h-5 text-antique-gold star-glow"
               fill="#D4A24F"
               strokeWidth={0}
             />
           </div>
 
           {/* Headline */}
-          <h2 
-            className="headline font-serif text-warm-ivory uppercase tracking-wider leading-snug mb-6"
-            style={{ fontSize: 'clamp(24px, 3.5vw, 48px)' }}
+          <h2
+            className="headline font-serif text-warm-ivory uppercase tracking-wider leading-snug mb-4 md:mb-6"
+            style={{ fontSize: 'clamp(20px, 3.5vw, 48px)' }}
           >
             {words.map((word, i) => (
               <span key={i} className="word inline-block mr-[0.2em]">
@@ -180,15 +181,15 @@ export default function DiptychSection() {
           </h2>
 
           {/* Body */}
-          <p className="body-line font-sans text-sm text-muted-parchment leading-relaxed mb-2">
+          <p className="body-line font-sans text-xs md:text-sm text-muted-parchment leading-relaxed mb-1.5 md:mb-2">
             Some people change the temperature of a room
           </p>
-          <p className="body-line font-sans text-sm text-muted-parchment leading-relaxed mb-8">
+          <p className="body-line font-sans text-xs md:text-sm text-muted-parchment leading-relaxed mb-6 md:mb-8">
             just by walking in. You change the temperature of a life.
           </p>
 
           {/* CTA */}
-          <button className="cta px-6 py-2 border border-antique-gold text-antique-gold font-sans text-sm tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors">
+          <button className="cta px-5 md:px-6 py-2 border border-antique-gold text-antique-gold font-sans text-xs md:text-sm tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors touch-manipulation">
             Add a photo
           </button>
         </div>

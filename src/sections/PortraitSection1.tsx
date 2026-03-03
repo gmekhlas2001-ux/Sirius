@@ -99,55 +99,56 @@ export default function PortraitSection1() {
   const words = headlineText.split(' ');
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="relative w-screen h-screen overflow-hidden z-30"
     >
       {/* Left Portrait Panel */}
-      <div 
+      <div
         ref={portraitRef}
-        className="absolute left-0 top-0 w-[55vw] h-full"
+        className="absolute left-0 top-0 w-full md:w-[55vw] h-full"
       >
-        <img 
-          src="/portrait_confidence_left.jpg" 
+        <img
+          src="/portrait_confidence_left.jpg"
           alt="Portrait"
           className="w-full h-full object-cover"
           style={{ filter: 'saturate(0.6) contrast(1.1)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-night-slate/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-night-slate/40 md:to-night-slate/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night-slate/80 md:hidden" />
       </div>
 
       {/* Vertical Hairline */}
-      <div 
-        className="absolute top-0 h-full hairline-vertical"
+      <div
+        className="hidden md:block absolute top-0 h-full hairline-vertical"
         style={{ left: '55vw' }}
       />
 
       {/* Right Dark Panel */}
-      <div 
+      <div
         ref={panelRef}
-        className="absolute right-0 top-0 w-[45vw] h-full bg-night-slate"
+        className="hidden md:block absolute right-0 top-0 w-[45vw] h-full bg-night-slate"
       />
 
       {/* Text Content */}
-      <div 
+      <div
         ref={textRef}
-        className="absolute left-[62vw] top-1/2 -translate-y-1/2 w-[30vw]"
+        className="absolute left-1/2 md:left-[62vw] bottom-[8%] md:top-1/2 -translate-x-1/2 md:-translate-x-0 md:-translate-y-1/2 w-[85vw] md:w-[30vw] px-6 md:px-0"
       >
         {/* Star Mark */}
-        <div className="mb-6">
-          <Star 
-            className="w-5 h-5 text-antique-gold star-glow" 
+        <div className="mb-4 md:mb-6">
+          <Star
+            className="w-4 h-4 md:w-5 md:h-5 text-antique-gold star-glow"
             fill="#D4A24F"
             strokeWidth={0}
           />
         </div>
 
         {/* Headline */}
-        <h2 
+        <h2
           ref={headlineRef}
-          className="font-serif text-warm-ivory uppercase tracking-wider leading-snug mb-6"
-          style={{ fontSize: 'clamp(28px, 4vw, 56px)' }}
+          className="font-serif text-warm-ivory uppercase tracking-wider leading-snug mb-4 md:mb-6"
+          style={{ fontSize: 'clamp(24px, 4vw, 56px)' }}
         >
           {words.map((word, i) => (
             <span key={i} className="word inline-block mr-[0.2em]">
@@ -157,17 +158,17 @@ export default function PortraitSection1() {
         </h2>
 
         {/* Body */}
-        <p className="body-line font-sans text-sm text-muted-parchment leading-relaxed mb-2">
+        <p className="body-line font-sans text-xs md:text-sm text-muted-parchment leading-relaxed mb-1.5 md:mb-2">
           You find beauty in small things.
         </p>
-        <p className="body-line font-sans text-sm text-muted-parchment leading-relaxed mb-8">
+        <p className="body-line font-sans text-xs md:text-sm text-muted-parchment leading-relaxed mb-6 md:mb-8">
           You make ordinary days feel like scenes from a film.
         </p>
 
         {/* CTA */}
-        <a 
-          href="#reply" 
-          className="cta font-sans text-sm text-warm-ivory link-underline inline-block"
+        <a
+          href="#reply"
+          className="cta font-sans text-xs md:text-sm text-warm-ivory link-underline inline-block touch-manipulation"
         >
           Leave a reply
         </a>
