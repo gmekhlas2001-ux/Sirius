@@ -1,0 +1,70 @@
+/* App-specific styles */
+
+/* Ensure smooth scroll behavior is disabled for GSAP */
+html {
+  scroll-behavior: auto !important;
+}
+
+/* Pin spacer fix for GSAP */
+.pin-spacer {
+  pointer-events: none !important;
+}
+
+.pin-spacer > * {
+  pointer-events: auto !important;
+}
+
+/* Ensure sections stack properly */
+section {
+  will-change: transform;
+}
+
+/* Image loading optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Prevent text selection on interactive elements */
+button, a {
+  user-select: none;
+}
+
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 1px solid rgba(212, 162, 79, 0.6);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for interactive elements */
+button, a, input, textarea {
+  transition: all 0.2s ease;
+}
+
+/* Paper texture enhancement */
+.paper-texture {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  .font-serif {
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
