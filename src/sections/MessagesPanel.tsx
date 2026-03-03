@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase, type Message } from '../lib/supabase';
-import { Mail, Clock, CheckCircle2, Circle } from 'lucide-react';
+import { Mail, Clock, CircleCheck as CheckCircle2, Circle } from 'lucide-react';
 
 export default function MessagesPanel() {
   const [messages, setMessages] = useState<Message[]>([]);
