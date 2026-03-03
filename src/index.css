@@ -200,3 +200,8 @@ input:focus, textarea:focus {
   background: rgba(212, 162, 79, 0.3);
   color: #F4F1EA;
 }
+
+/* Gradient Radial */
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}

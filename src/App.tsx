@@ -5,6 +5,7 @@ import './App.css';
 
 import Navigation from './components/Navigation';
 import HeroSection from './sections/HeroSection';
+import DayCounterSection from './sections/DayCounterSection';
 import NoteSection from './sections/NoteSection';
 import PortraitSection1 from './sections/PortraitSection1';
 import PortraitSection2 from './sections/PortraitSection2';
@@ -94,27 +95,30 @@ function App() {
         {/* Section 1: Hero */}
         <HeroSection />
 
-        {/* Section 2: Note */}
+        {/* Section 2: Day Counter */}
+        <DayCounterSection />
+
+        {/* Section 3: Note */}
         <NoteSection />
 
-        {/* Section 3: Portrait 1 */}
+        {/* Section 4: Portrait 1 */}
         <PortraitSection1 />
 
-        {/* Section 4: Portrait 2 */}
+        {/* Section 5: Portrait 2 */}
         <PortraitSection2 />
 
-        {/* Section 5: Diptych */}
+        {/* Section 6: Diptych */}
         <DiptychSection />
 
-        {/* Section 6: Portrait 3 */}
+        {/* Section 7: Portrait 3 */}
         <PortraitSection3 />
 
-        {/* Section 7: Closing + Contact */}
+        {/* Section 8: Closing + Contact */}
         <div id="contact">
           <ClosingSection />
         </div>
 
-        {/* Section 8: Footer */}
+        {/* Section 9: Footer */}
         <Footer />
       </main>
     </div>
