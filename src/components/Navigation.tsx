@@ -9,16 +9,17 @@ interface NavigationProps {
 export default function Navigation({ onToggleMessages, showingMessages }: NavigationProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isAtBottom, setIsAtBottom] = useState(false);
+  const [isMouseNearTop, setIsMouseNearTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
-      
+
       // Show nav after scrolling past hero (about 100vh)
       setIsVisible(scrollY > windowHeight * 0.5);
-      
+
       // Check if near bottom
       setIsAtBottom(scrollY + windowHeight > docHeight - 200);
     };
@@ -27,12 +28,28 @@ export default function Navigation({ onToggleMessages, showingMessages }: Naviga
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!showingMessages) {
+      setIsMouseNearTop(false);
+      return;
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      setIsMouseNearTop(e.clientY < 100);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [showingMessages]);
+
+  const shouldShowNav = showingMessages ? isMouseNearTop : isVisible;
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-        showingMessages || isVisible
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+        shouldShowNav
           ? 'opacity-100 translate-y-0'
-          : 'opacity-0 -translate-y-4 pointer-events-none'
+          : 'opacity-0 -translate-y-full pointer-events-none'
       }`}
     >
       <div className="w-full px-6 md:px-10 py-5 flex items-center justify-between bg-night-slate/80 backdrop-blur-md">
