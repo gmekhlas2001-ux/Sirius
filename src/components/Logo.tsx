@@ -39,14 +39,9 @@ export default function Logo({ className = "", showText = true }: LogoProps) {
 
       {/* Text */}
       {showText && (
-        <div className="flex flex-col leading-none">
-          <span className="font-serif text-warm-ivory text-lg tracking-wider">
-            Forever
-          </span>
-          <span className="font-sans text-muted-parchment text-[10px] tracking-[0.2em] uppercase mt-0.5">
-            Yours
-          </span>
-        </div>
+        <span className="font-serif text-warm-ivory text-lg tracking-wider">
+          Sirius
+        </span>
       )}
     </div>
   );
