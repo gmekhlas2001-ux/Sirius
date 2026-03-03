@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Star, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import Logo from './Logo';
 
 interface NavigationProps {
   onToggleMessages: () => void;
@@ -56,16 +57,9 @@ export default function Navigation({ onToggleMessages, showingMessages }: Naviga
         {/* Logo */}
         <button
           onClick={() => showingMessages && onToggleMessages()}
-          className="flex items-center gap-2 md:gap-3 cursor-pointer hover:opacity-80 transition-opacity touch-manipulation"
+          className="cursor-pointer hover:opacity-80 transition-opacity touch-manipulation"
         >
-          <Star
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-antique-gold"
-            fill="#D4A24F"
-            strokeWidth={0}
-          />
-          <span className="font-serif text-warm-ivory text-base sm:text-lg tracking-wider">
-            Sirius
-          </span>
+          <Logo />
         </button>
 
         {/* Action Buttons */}
