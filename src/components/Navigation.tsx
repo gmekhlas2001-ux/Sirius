@@ -52,32 +52,32 @@ export default function Navigation({ onToggleMessages, showingMessages }: Naviga
           : 'opacity-0 -translate-y-full pointer-events-none'
       }`}
     >
-      <div className="w-full px-6 md:px-10 py-5 flex items-center justify-between bg-night-slate/80 backdrop-blur-md">
+      <div className="w-full px-4 sm:px-6 md:px-10 py-4 md:py-5 flex items-center justify-between bg-night-slate/80 backdrop-blur-md">
         {/* Logo */}
         <button
           onClick={() => showingMessages && onToggleMessages()}
-          className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 md:gap-3 cursor-pointer hover:opacity-80 transition-opacity touch-manipulation"
         >
           <Star
-            className="w-4 h-4 text-antique-gold"
+            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-antique-gold"
             fill="#D4A24F"
             strokeWidth={0}
           />
-          <span className="font-serif text-warm-ivory text-lg tracking-wider">
+          <span className="font-serif text-warm-ivory text-base sm:text-lg tracking-wider">
             Sirius
           </span>
         </button>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {!showingMessages && (
             <>
               <button
                 onClick={onToggleMessages}
-                className="px-4 py-2 flex items-center gap-2 text-muted-parchment hover:text-antique-gold font-sans text-xs tracking-wider transition-colors"
+                className="px-3 py-2 sm:px-4 flex items-center gap-1.5 sm:gap-2 text-muted-parchment hover:text-antique-gold font-sans text-xs tracking-wider transition-colors touch-manipulation"
                 title="View messages"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">Messages</span>
               </button>
 
@@ -89,7 +89,7 @@ export default function Navigation({ onToggleMessages, showingMessages }: Naviga
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="px-5 py-2 border border-antique-gold text-antique-gold font-sans text-xs tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors"
+                className="px-3 sm:px-5 py-2 border border-antique-gold text-antique-gold font-sans text-[10px] sm:text-xs tracking-wider btn-hover hover:bg-antique-gold/10 transition-colors touch-manipulation whitespace-nowrap"
               >
                 {isAtBottom ? 'Back to top' : 'Send a note'}
               </button>
